@@ -1,0 +1,21 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Change if needed
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Private Registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login registry.diegoglozano.com --username ${{ secrets.REGISTRY_USER }} --password-stdin
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t registry.diegoglozano.com/cuantos-lozanos:latest .
+          docker push registry.diegoglozano.com/cuantos-lozanos:latest
