@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+dist
+Dockerfile
+.dockerignore
+.env.local
