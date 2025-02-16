@@ -12,8 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # - name: Login to Private Registry
-      #   run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login registry.diegoglozano.com --username ${{ secrets.REGISTRY_USER }} --password-stdin
+      - name: Login to Private Registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login registry.diegoglozano.com --username ${{ secrets.REGISTRY_USER }} --password-stdin
 
       - name: Build and push Docker image
         run: |
